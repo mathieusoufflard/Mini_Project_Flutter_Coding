@@ -31,40 +31,84 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  String textItem(int index)
-  {
-    switch (index){
-      case 0 :
+  String _textItem(int index) {
+    switch (index) {
+      case 0:
         return "1 HONK";
         break;
-      case 1 :
+      case 1:
         return "2 HONK";
         break;
       case 2 :
         return "Promo";
         break;
-      case 3 :
+      case 3:
         return "4 HONK";
         break;
-      case 4 :
+      case 4:
         return "5 HONK";
         break;
-      case 5 :
+      case 5:
         return "6 HONK";
         break;
-      case 6 :
+      case 6:
         return "7 HONK";
         break;
-      case 7 :
+      case 7:
         return "7 HONK";
         break;
-      case 8 :
+      case 8:
         return "9 HONK";
         break;
-      default :
+      default:
         return "HONK";
-
     }
+  }
+
+  Icon _iconItem(int index) {
+    switch (index) {
+      case 0:
+        return Icon(Icons.add, color: Colors.green,);
+        break;
+      case 1:
+        return Icon(Icons.home, color: Colors.black,);
+        break;
+      case 2:
+        return Icon(Icons.ac_unit, color: Colors.black,);
+        break;
+      case 3:
+        return Icon(Icons.access_alarm, color: Colors.black,);
+        break;
+      case 4:
+        return Icon(Icons.access_time, color: Colors.black,);
+        break;
+      case 5:
+        return Icon(Icons.accessibility, color: Colors.black,);
+        break;
+      case 6:
+        return Icon(Icons.accessible, color: Colors.black,);
+        break;
+      case 7:
+        return Icon(Icons.account_balance, color: Colors.black,);
+        break;
+      case 8:
+        return Icon(Icons.account_balance_wallet, color: Colors.black,);
+        break;
+      default:
+        return Icon(Icons.phone, color: Colors.black,);
+    }
+  }
+
+  _setItem(int index){
+    return Column(
+      children: [
+        _iconItem(index),
+        Text(
+          _textItem(index),
+          style: Theme.of(context).textTheme.headline5,
+        ),
+      ],
+    );
   }
 
   @override
@@ -74,76 +118,71 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: GridView.count(
-        // Create a grid with 2 columns. If you change the scrollDirection to
-        // horizontal, this produces 2 rows.
-        crossAxisCount: 2,
-        // Generate 100 widgets that display their index in the List.
+        crossAxisCount: 3,
+        mainAxisSpacing: 5,
+        crossAxisSpacing: 2,
         children: List.generate(9, (index) {
           return Center(
             child: TextButton(
               onPressed: () {
                 switch (index) {
-                  case 0 :
+                  case 0:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
-                        }));
+                      return new Test();
+                    }));
                     break;
-                  case 1 :
+                  case 1:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
-                        }));
+                      return new Test();
+                    }));
                     break;
-                  case 2 :
+                  case 2:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
                           return new PromotionPage();
                         }));
                     break;
-                  case 3 :
+                  case 3:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
-                        }));
+                      return new Test();
+                    }));
                     break;
-                  case 4 :
+                  case 4:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
-                        }));
+                      return new Test();
+                    }));
                     break;
-                  case 5 :
+                  case 5:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
-                        }));
+                      return new Test();
+                    }));
                     break;
-                  case 6 :
+                  case 6:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
-                        }));
+                      return new Test();
+                    }));
                     break;
-                  case 7 :
+                  case 7:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
-                        }));
+                      return new Test();
+                    }));
                     break;
-                  case 8 :
+                  case 8:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
-                        }));
+                      return new Test();
+                    }));
                     break;
-
                 }
               },
-              child: Text(
-                textItem(index),
-                style: Theme.of(context).textTheme.headline5,
-              ),
+              child: _setItem(index)
             ),
           );
         }),
