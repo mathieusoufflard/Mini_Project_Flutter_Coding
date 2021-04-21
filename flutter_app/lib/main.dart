@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/testPage.dart';
 
 void main() {
@@ -40,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return "2 HONK";
         break;
       case 2 :
-        return "3 HONK";
+        return "Promo";
         break;
       case 3 :
         return "4 HONK";
@@ -97,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 2 :
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
+                          return new PromotionPage();
                         }));
                     break;
                   case 3 :
