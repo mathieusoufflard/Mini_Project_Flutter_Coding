@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/fileSizePage.dart';
 import 'package:flutter_app/Controllers/DateDiffPage.dart';
+import 'package:flutter_app/numeralConvertPage.dart';
 import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/romanusPage.dart';
 import 'package:flutter_app/testPage.dart';
@@ -60,10 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
         return "7 HONK";
         break;
       case 7:
-        return "7 HONK";
+        return "8 HONK";
         break;
       case 8:
-        return "9 HONK";
+        return "Convertisseur numérique";
         break;
       default:
         return "HONK";
@@ -182,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 8:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new NumeralConvertPage();
                     }));
                     break;
                 }
