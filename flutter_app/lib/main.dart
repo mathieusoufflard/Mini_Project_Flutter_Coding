@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/areaPage.dart';
 import 'package:flutter_app/fileSizePage.dart';
 import 'package:flutter_app/Controllers/DateDiffPage.dart';
 import 'package:flutter_app/numeralConvertPage.dart';
@@ -159,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 4:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new AreaPage();
                     }));
                     break;
                   case 5:
