@@ -1,13 +1,8 @@
+
 class TemperatureBrain {
 
-  TemperatureBrain();
 
-  final String topSelected = "celsius";
-  final String bottomSelected ="fahrenheit";
-  final String topVal ="7";
-
-
-  String getConversion()
+  String getConversion(topVal,topSelected,bottomSelected)
   { if(topVal == '' || topVal == null)
   {
     return '            ';
@@ -16,11 +11,11 @@ class TemperatureBrain {
   {
     if(bottomSelected == 'fahrenheit')
     {
-      return _getCelsiusToFahreheit();
+      return _getCelsiusToFahreheit(topVal);
     }
     else if(bottomSelected == 'kelvin')
     {
-      return _getCelsiusToKelvin();
+      return _getCelsiusToKelvin(topVal);
     }
     else
       return topVal;
@@ -31,12 +26,12 @@ class TemperatureBrain {
   {
     if(bottomSelected == 'celsius')
     {
-      return _getFahrenheitToCelsius();
+      return _getFahrenheitToCelsius(topVal);
     }
 
     else if(bottomSelected == 'kelvin')
     {
-      return _getFahrenheitToKelvin();
+      return _getFahrenheitToKelvin(topVal);
     }
 
     else
@@ -48,12 +43,12 @@ class TemperatureBrain {
   {
     if(bottomSelected == 'celsius')
     {
-      return _getKelvinToCelsius() ;
+      return _getKelvinToCelsius(topVal);
     }
 
     else if(bottomSelected == 'fahrenheit')
     {
-      return _getKelvinToFahrenheit();
+      return _getKelvinToFahrenheit(topVal);
     }
 
     else
@@ -66,7 +61,7 @@ class TemperatureBrain {
   }
 
 
-  String _getCelsiusToFahreheit()
+  String _getCelsiusToFahreheit(topVal)
   {
     double dCelsius = double.parse(topVal);
     double result = (dCelsius*9/5) + 32;
@@ -75,7 +70,7 @@ class TemperatureBrain {
 
   }
 
-  String _getCelsiusToKelvin()
+  String _getCelsiusToKelvin(topVal)
   {
     double dCelsius = double.parse(topVal);
     double result = dCelsius + 273.15;
@@ -84,7 +79,7 @@ class TemperatureBrain {
 
   }
 
-  String _getFahrenheitToCelsius()
+  String _getFahrenheitToCelsius(topVal)
   {
     double dFahren = double.parse(topVal);
     double result = (dFahren - 32) * 5/9;
@@ -93,7 +88,7 @@ class TemperatureBrain {
 
   }
 
-  String _getFahrenheitToKelvin()
+  String _getFahrenheitToKelvin(topVal)
   {
     double dFahren = double.parse(topVal);
     double result = ((dFahren - 32) * 5/9) + 273.15 ;
@@ -102,7 +97,7 @@ class TemperatureBrain {
 
   }
 
-  String _getKelvinToCelsius()
+  String _getKelvinToCelsius(topVal)
   {
     double dKelvin = double.parse(topVal);
     double result =  dKelvin -273.15;
@@ -111,7 +106,7 @@ class TemperatureBrain {
 
   }
 
-  String _getKelvinToFahrenheit()
+  String _getKelvinToFahrenheit(topVal)
   {
     double dKelvin = double.parse(topVal);
     double result = ((dKelvin -273.15)*9/5) + 32;

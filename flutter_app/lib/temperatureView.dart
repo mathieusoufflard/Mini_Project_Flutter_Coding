@@ -1,79 +1,73 @@
-import 'temperatureBrain.dart';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_app/temperatureBrain.dart';
 
 class TemperatureView extends StatelessWidget {
 
-  TextEditingController _inputData = TextEditingController();
-  TextEditingController _deviceData = TextEditingController();
-
-
-  printData(_var) {
-    return "coucou" ;
-  }
+  TextEditingController initPriceController = TextEditingController();
+  TextEditingController promoRateController = TextEditingController();
+  TextEditingController promoValueController = TextEditingController();
+  TextEditingController finalPriceController = TextEditingController();
 
 
   @override
   Widget build(BuildContext context) {
-    final title = 'test';
+    final title = 'Promotion';
+    TemperatureBrain temperatureBrain = new TemperatureBrain();
+
+    _setInputField(String hintText, TextEditingController fieldController,
+        TextInputType inputType,
+        [bool readOnly = false]) {
+      return Container(
+        width: MediaQuery.of(context).size.width / 5,
+        margin: EdgeInsets.all(10),
+        child: TextField(
+          controller: fieldController,
+          keyboardType: inputType,
+          inputFormatters: inputType == TextInputType.number
+              ? <TextInputFormatter>[
+            FilteringTextInputFormatter.allow(RegExp('[0-9.]'))
+          ]
+              : [],
+          decoration: InputDecoration(hintText: hintText),
+          readOnly: readOnly,
+        ),
+      );
+    }
+
 
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
-      body: new Container(
-        color: Color(0xff258DED),
-        height: 400.0,
-        alignment: Alignment.center,
-        child: new Column(
+      body: Center(
+        child: Column(
           children: [
-            new Container(
-              height: 200.0,
-              width: 200.0,
-              decoration: new BoxDecoration(
-                  image: DecorationImage(
-                      image: new AssetImage('assets/logo.png'),
-                      fit: BoxFit.fill),
-                  shape: BoxShape.circle),
-            ),
-            new Container(
-              child: TextField(
-                controller: _inputData,
-              ),
-            ),
-            new Container(
-              child: TextField(
-                controller: _deviceData,
-              ),
-            ),
-            new Container(
-              child: Text(''),
-            ),
-
+            Text("Degré :"),
+            _setInputField("0",
+                initPriceController, TextInputType.number),
+            Text("Type de degré "),
+            _setInputField("0",
+                promoRateController, TextInputType.text),
+            Text("Type de dégré converti"),
+            _setInputField(
+                "0",
+                promoValueController,
+                TextInputType.text),
+            Text("Degré converti "),
+            _setInputField(
+                "0",
+                finalPriceController,
+                TextInputType.number,
+                true),
+            ElevatedButton(onPressed: () {
+              finalPriceController.text = temperatureBrain.getConversion(initPriceController.text,promoRateController.text,promoValueController.text);
+            }, child: Text("Calculer"))
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        // When the user presses the button, show an alert dialog containing
-        // the text that the user has entered into the text field.
-        onPressed: () {
-          String txt = printData(_inputData);
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                // Retrieve the text the that user has entered by using the
-                // TextEditingController.
-                content: Text(txt),
-              );
-            },
-          );
-        },
-        tooltip: 'Show me the value!',
-        child: Icon(Icons.text_fields),
-      ),
     );
-
   }
 }
-
-
