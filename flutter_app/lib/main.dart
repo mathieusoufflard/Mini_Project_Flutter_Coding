@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/fileSizePage.dart';
 import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/testPage.dart';
 
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String _textItem(int index) {
     switch (index) {
       case 0:
-        return "1 HONK";
+        return "Taille de fichiers";
         break;
       case 1:
         return "2 HONK";
@@ -129,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 0:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new FileSizePage();
                     }));
                     break;
                   case 1:
