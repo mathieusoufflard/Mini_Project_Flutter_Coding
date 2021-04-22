@@ -20,7 +20,7 @@ class _DateDiffPageState extends State<DateDiffPage> {
     String year = ((secondDate.year - firstDate.year).abs()).toString();
     String month = ((secondDate.month - firstDate.month).abs()).toString();
     String day = ((secondDate.day - firstDate.day).abs()).toString();
-    return "$year années, $month mois et $day, jours";
+    return "$year années, $month mois et $day jours";
   }
 
   @override
