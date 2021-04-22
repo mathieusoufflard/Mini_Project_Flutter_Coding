@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:romanice/romanice.dart';
 
 
-class RomanusView extends StatelessWidget {
+class RomanusPage extends StatelessWidget {
 
   TextEditingController decimalData = TextEditingController();
   TextEditingController romanData = TextEditingController();
