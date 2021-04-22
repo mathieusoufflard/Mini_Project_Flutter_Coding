@@ -61,10 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
         return "7 HONK";
         break;
       case 7:
-        return "Convertisseur numérique";
+        return "8 HONK";
         break;
       case 8:
-        return "9 HONK";
+        return "Convertisseur numérique";
         break;
       default:
         return "HONK";
