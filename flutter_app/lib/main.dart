@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Controllers/DateDiffPage.dart';
 import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/testPage.dart';
 
@@ -147,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 3:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new DateDiffPage();
                     }));
                     break;
                   case 4:
