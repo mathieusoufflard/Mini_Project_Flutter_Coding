@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/testPage.dart';
 import 'package:flutter_app/temperatureView.dart';
-import 'package:flutter_app/temperatureBrain.dart';
+import 'package:flutter_app/temperatureController.dart';
 
 
 void main() {

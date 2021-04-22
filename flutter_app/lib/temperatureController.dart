@@ -1,5 +1,5 @@
 
-class TemperatureBrain {
+class TemperatureController {
 
 
   String getConversion(topVal,topSelected,bottomSelected)

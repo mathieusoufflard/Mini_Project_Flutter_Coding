@@ -1,21 +1,19 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/temperatureBrain.dart';
+import 'package:flutter_app/temperatureController.dart';
 
 class TemperatureView extends StatelessWidget {
 
   TextEditingController initPriceController = TextEditingController();
-  TextEditingController promoRateController = TextEditingController();
-  TextEditingController promoValueController = TextEditingController();
+  TextEditingController typeDegreeTop = TextEditingController();
+  TextEditingController typeDegreeBottom = TextEditingController();
   TextEditingController finalPriceController = TextEditingController();
 
 
   @override
   Widget build(BuildContext context) {
-    final title = 'Promotion';
-    TemperatureBrain temperatureBrain = new TemperatureBrain();
+    final title = 'Temperature';
+    TemperatureController temperatureController = new TemperatureController();
 
     _setInputField(String hintText, TextEditingController fieldController,
         TextInputType inputType,
@@ -49,13 +47,70 @@ class TemperatureView extends StatelessWidget {
             _setInputField("0",
                 initPriceController, TextInputType.number),
             Text("Type de degré "),
-            _setInputField("0",
-                promoRateController, TextInputType.text),
-            Text("Type de dégré converti"),
-            _setInputField(
-                "0",
-                promoValueController,
-                TextInputType.text),
+            _setInputField("celsius",
+                typeDegreeTop, TextInputType.text),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children :<Widget>[
+                IconButton(
+                  icon: Image.asset('assets/images/icon-kalvin.png'),
+                  tooltip: 'Kelvin',
+                  onPressed: () {
+                    typeDegreeTop.text = 'kelvin';
+                  },
+                ),
+                IconButton(
+                  icon: Image.asset('assets/images/icon-fahrenheit.png'),
+                  tooltip: 'Fahrenheit',
+                  onPressed: () {
+                    typeDegreeTop.text = 'fahrenheit';
+
+                  },
+                ),
+                IconButton(
+                  icon: Image.asset('assets/images/icon-celsius.png'),
+                  tooltip: 'Celsius',
+                  onPressed: () {
+                    typeDegreeTop.text = 'celsius';
+
+                  },
+                ),
+              ],
+            ),
+              Text("Type de dégré converti"),
+              _setInputField(
+                  "fahrenheit",
+                  typeDegreeBottom,
+                  TextInputType.text),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children :<Widget>[
+                IconButton(
+                  icon: Image.asset('assets/images/icon-kalvin.png'),
+                  tooltip: 'Kelvin',
+                  onPressed: () {
+                    typeDegreeBottom.text = 'kelvin';
+                  },
+                ),
+                IconButton(
+                  icon: Image.asset('assets/images/icon-fahrenheit.png'),
+                  tooltip: 'Fahrenheit',
+                  onPressed: () {
+                    typeDegreeBottom.text = 'fahrenheit';
+
+                  },
+                ),
+                IconButton(
+                  icon: Image.asset('assets/images/icon-celsius.png'),
+                  tooltip: 'Celsius',
+                  onPressed: () {
+                    typeDegreeBottom.text = 'celsius';
+
+                  },
+                ),
+              ],
+            ),
+
             Text("Degré converti "),
             _setInputField(
                 "0",
@@ -63,7 +118,7 @@ class TemperatureView extends StatelessWidget {
                 TextInputType.number,
                 true),
             ElevatedButton(onPressed: () {
-              finalPriceController.text = temperatureBrain.getConversion(initPriceController.text,promoRateController.text,promoValueController.text);
+              finalPriceController.text = temperatureController.getConversion(initPriceController.text,typeDegreeTop.text,typeDegreeBottom.text);
             }, child: Text("Calculer"))
           ],
         ),
