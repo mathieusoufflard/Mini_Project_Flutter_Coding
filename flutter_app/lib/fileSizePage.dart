@@ -56,19 +56,15 @@ class _FileSizePageState extends State<FileSizePage> {
 
   void firstInputOnChanged(String val) {
     setState(() {
-      fileSizeController.secondInputController.text = updateFileSize(
-          val,
-          firstDropdownValue,
-          secondDropdownValue);
+      fileSizeController.secondInputController.text =
+          updateFileSize(val, firstDropdownValue, secondDropdownValue);
     });
   }
 
   void secondInputOnChanged(String val) {
     setState(() {
-      fileSizeController.firstInputController.text = updateFileSize(
-          val,
-          secondDropdownValue,
-          firstDropdownValue);
+      fileSizeController.firstInputController.text =
+          updateFileSize(val, secondDropdownValue, firstDropdownValue);
     });
   }
 
@@ -79,63 +75,68 @@ class _FileSizePageState extends State<FileSizePage> {
         title: Text(title),
       ),
       body: Center(
-        child: Row(
-          children: [
-            Column(
-              children: [
-                DropdownButton(
-                  value: firstDropdownValue,
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      firstDropdownValue = newValue!;
-                    });
-                    firstInputOnChanged(fileSizeController.firstInputController.text);
-                  },
-                  items: <String>['O', 'Ko', 'Mo', 'Go', 'To', 'Po']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-                InputHelper().setInputField(
-                    context,
-                    "0",
-                    fileSizeController.firstInputController,
-                    TextInputType.number,
-                    false,
-                    firstInputOnChanged),
-              ],
-            ),
-            Column(
-              children: [
-                DropdownButton(
-                  value: secondDropdownValue,
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      secondDropdownValue = newValue!;
-                    });
-                    secondInputOnChanged(fileSizeController.secondInputController.text);
-                  },
-                  items: <String>['O', 'Ko', 'Mo', 'Go', 'To', 'Po']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-                InputHelper().setInputField(
-                    context,
-                    "0",
-                    fileSizeController.secondInputController,
-                    TextInputType.number,
-                    false,
-                    secondInputOnChanged),
-              ],
-            ),
-          ],
+        child: Container(
+          margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 3.5, top: 60),
+          child: Row(
+            children: [
+              Column(
+                children: [
+                  DropdownButton(
+                    value: firstDropdownValue,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        firstDropdownValue = newValue!;
+                      });
+                      firstInputOnChanged(
+                          fileSizeController.firstInputController.text);
+                    },
+                    items: <String>['O', 'Ko', 'Mo', 'Go', 'To', 'Po']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  InputHelper().setInputField(
+                      context,
+                      "0",
+                      fileSizeController.firstInputController,
+                      TextInputType.number,
+                      false,
+                      firstInputOnChanged),
+                ],
+              ),
+              Column(
+                children: [
+                  DropdownButton(
+                    value: secondDropdownValue,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        secondDropdownValue = newValue!;
+                      });
+                      secondInputOnChanged(
+                          fileSizeController.secondInputController.text);
+                    },
+                    items: <String>['O', 'Ko', 'Mo', 'Go', 'To', 'Po']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  InputHelper().setInputField(
+                      context,
+                      "0",
+                      fileSizeController.secondInputController,
+                      TextInputType.number,
+                      false,
+                      secondInputOnChanged),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
