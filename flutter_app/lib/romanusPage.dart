@@ -56,10 +56,10 @@ class RomanusView extends StatelessWidget {
                 ),
             ElevatedButton(onPressed: () {
               if(decimalData.text.isNotEmpty){
-                romanData.text = unicodeFromRoman.inverse()(int.parse(decimalData.text));
+                romanData.text = standardToRoman(int.parse(decimalData.text));
               }
               else if(romanData.text.isNotEmpty){
-                decimalData.text = unicodeFromRoman(romanData.text).toString();
+                decimalData.text = standardToRoman.inverse()(romanData.text).toString();
               }
             }, child: Text("Calculer"))
           ],
