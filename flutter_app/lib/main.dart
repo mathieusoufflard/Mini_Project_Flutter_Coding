@@ -5,8 +5,7 @@ import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/romanusPage.dart';
 import 'package:flutter_app/testPage.dart';
 import 'package:flutter_app/temperatureView.dart';
-import 'package:flutter_app/temperatureController.dart';
-
+import 'package:flutter_app/distancePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -165,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 5:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new DistancePage();
                     }));
                     break;
                   case 6:
@@ -177,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 7:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new RomanusView();
+                      return new RomanusPage();
                     }));
                     break;
                   case 8:
