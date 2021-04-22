@@ -39,31 +39,47 @@ class PromotionPage extends StatelessWidget {
         child: Column(
           children: [
             Text("Prix initial : "),
-            _setInputField("0",
-                promotionController.initPriceController, TextInputType.number),
+            _setInputField("0", promotionController.initPriceController,
+                TextInputType.number),
             Text("Pourcentage de réduction : "),
-            _setInputField("0",
-                promotionController.promoRateController, TextInputType.number),
+            _setInputField("0", promotionController.promoRateController,
+                TextInputType.number),
             Text("Valeur de réduction : "),
-            _setInputField(
-                "0",
-                promotionController.promoValueController,
-                TextInputType.number,
-                true),
+            _setInputField("0", promotionController.promoValueController,
+                TextInputType.number, true),
             Text("Prix final : "),
-            _setInputField(
-                "0",
-                promotionController.finalPriceController,
-                TextInputType.number,
-                true),
-            ElevatedButton(onPressed: () {
-              double initPrice = double.parse(promotionController.initPriceController.text);
-              double promoRate = double.parse(promotionController.promoRateController.text);
-              double promoValue = (initPrice * promoRate) / 100;
-              double finalPrice = initPrice - promoValue;
-              promotionController.promoValueController.text = promoValue.toString();
-              promotionController.finalPriceController.text = finalPrice.toString();
-            }, child: Text("Calculer"))
+            _setInputField("0", promotionController.finalPriceController,
+                TextInputType.number, true),
+            ElevatedButton(
+                onPressed: () {
+                  if (promotionController.initPriceController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("Il faut renseigner un prix initial")));
+                  } else if (promotionController
+                      .promoRateController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                            "Il faut renseigner un pourcentage de réduction")));
+                  } else {
+                    double initPrice = double.parse(
+                        promotionController.initPriceController.text);
+                    double promoRate = double.parse(
+                        promotionController.promoRateController.text);
+                    if (promoRate < 0 || promoRate > 100) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              "Il faut renseigner un pourcentage de réduction")));
+                    } else {
+                      double promoValue = (initPrice * promoRate) / 100;
+                      double finalPrice = initPrice - promoValue;
+                      promotionController.promoValueController.text =
+                          promoValue.toString();
+                      promotionController.finalPriceController.text =
+                          finalPrice.toString();
+                    }
+                  }
+                },
+                child: Text("Calculer"))
           ],
         ),
       ),
