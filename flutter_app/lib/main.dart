@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/testPage.dart';
+import 'package:flutter_app/temperatureView.dart';
+import 'package:flutter_app/temperatureBrain.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -121,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 6 :
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                          return new Test();
+                          return  new TemperatureView();
                         }));
                     break;
                   case 7 :
