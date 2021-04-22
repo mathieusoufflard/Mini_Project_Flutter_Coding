@@ -3,7 +3,10 @@ import 'package:flutter_app/fileSizePage.dart';
 import 'package:flutter_app/Controllers/DateDiffPage.dart';
 import 'package:flutter_app/numeralConvertPage.dart';
 import 'package:flutter_app/promotionPage.dart';
+import 'package:flutter_app/romanusPage.dart';
 import 'package:flutter_app/testPage.dart';
+import 'package:flutter_app/temperatureView.dart';
+import 'package:flutter_app/distancePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -55,10 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
         return "6 HONK";
         break;
       case 6:
-        return "Convertisseur numérique";
+        return "7 HONK";
         break;
       case 7:
-        return "7 HONK";
+        return "Convertisseur numérique";
         break;
       case 8:
         return "9 HONK";
@@ -162,25 +165,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 5:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new DistancePage();
                     }));
                     break;
                   case 6:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new NumeralConvertPage();
-                    }));
+                          return  new TemperatureView();
+                        }));
                     break;
                   case 7:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new RomanusPage();
                     }));
                     break;
                   case 8:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new NumeralConvertPage();
                     }));
                     break;
                 }
