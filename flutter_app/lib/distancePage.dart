@@ -15,11 +15,13 @@ class DistancePage extends StatelessWidget {
   TextEditingController decimalData = TextEditingController();
   TextEditingController romanData = TextEditingController();
 
-  double? selectMesure(value,mesure) {
+  double? selectMesure(value,mesure,type) {
     value = double?.parse(value);
     var length = Length(removeTrailingZeros: false); //initialize Length object, let's specify that we want to keep the trailing zeros (e.g. 1.00) for stringValue
-    var unit = length.inches; //We get all ther others units
-    print('name:${unit.name}, value:${unit.value}, stringValue:${unit.stringValue}, symbol:${unit.symbol}');
+    late var unit ; //We get all ther others units
+    //var unit = length.kilometers; //We get all ther others units
+    //print('name:${unit.name}, value:${unit.value}, stringValue:${unit.stringValue}, symbol:${unit.symbol}');
+    print('type: ${type}');
 
     switch (mesure) {
       case "kilomètre":
@@ -29,7 +31,7 @@ class DistancePage extends StatelessWidget {
         length.convert(LENGTH.meters, value); //We give 1 meter as input
         break;
       case "decimètre" :
-        length.convert(LENGTH.meters, value); //We give 1 meter as input
+        length.convert(LENGTH.meters, (value/10)); //We give 1 meter as input
         break;
       case "centimètre":
         length.convert(LENGTH.centimeters, value); //We give 1 meter as input
@@ -51,12 +53,42 @@ class DistancePage extends StatelessWidget {
         break;
 
   }
+
+    switch (type) {
+      case "kilomètre":
+        unit =  length.kilometers; //We give 1 meter as input
+        break;
+      case "mètre":
+        unit = length.meters;
+        break;
+      case "decimètre" :
+        unit = (length.meters);
+        return (unit.value)*10;
+        break;
+      case "centimètre":
+        unit = length.centimeters;
+        break;
+      case "milimètre":
+        unit = length.millimeters;
+        break;
+      case "nanomètre":
+        unit = length.nanometers;
+        break;
+      case "yard":
+        unit = length.yards;
+        break;
+      case "pied":
+        unit = length.feet;
+        break;
+      case "pouce":
+        unit = length.inches;
+        break;
+      default :
+        unit = length.meters;
+    }
     return unit.value;
 
 }
-
-
-
 
 
   @override
@@ -97,15 +129,15 @@ class DistancePage extends StatelessWidget {
             _setInputField("0",
                 decimalData, TextInputType.number),
             MyStatefulWidget(),
-            MyStatefulWidget(),
-            Text("Chiffre romain "),
+            MyStatefulWidgetDown(),
+            Text("Resultat "),
             _setInputField(
               "0",
               romanData,
               TextInputType.text,
             ),
             ElevatedButton(onPressed: () {
-              double? mesure = selectMesure(decimalData.text,dropdownValue);
+              double? mesure = selectMesure(decimalData.text,dropdownValue,dropdownValueBottom);
               romanData.text = mesure.toString();
               print('coucou '+dropdownValue);
             }, child: Text("Calculer"))
@@ -172,3 +204,43 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
+
+class MyStatefulWidgetDown extends StatefulWidget {
+  const MyStatefulWidgetDown({Key? key}) : super(key: key);
+
+  @override
+  _MyStatefulWidgetStateDown createState() => _MyStatefulWidgetStateDown();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidgetStateDown extends State<MyStatefulWidgetDown> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValueBottom,
+      icon: const Icon(Icons.arrow_downward),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: Container(
+        height: 2,
+        color: Colors.deepPurpleAccent,
+      ),
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownValueBottom = newValue! ;
+        });
+      },
+      items: <String>['kilomètre', 'mètre','decimètre','centimètre', 'milimètre','nanomètre', 'yard','pied','pouce']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
+}
+
