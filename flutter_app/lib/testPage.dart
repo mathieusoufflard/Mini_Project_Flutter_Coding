@@ -10,6 +10,7 @@ class Test extends StatelessWidget{
           title: Text(title),
         ),
         body: Center(
+          child: Text("test"),
 
         ),
       );
