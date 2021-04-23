@@ -9,6 +9,7 @@ import 'package:flutter_app/AgeCalculator.dart';
 import 'package:flutter_app/testPage.dart';
 import 'package:flutter_app/temperatureView.dart';
 import 'package:flutter_app/distancePage.dart';
+import 'package:flutter_app/areaPage.dart';
 
 void main() {
   runApp(MyApp());

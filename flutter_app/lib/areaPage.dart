@@ -1,99 +1,104 @@
 import 'package:units_converter/Length.dart';
+import 'package:units_converter/Area.dart';
 
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:romanice/romanice.dart';
 
-String dropdownValue = 'mètre';
-String dropdownValueBottom = 'mètre';
+String dropdownValue = 'hectares';
+String dropdownValueBottom = 'hectares';
 
 
 
-class DistancePage extends StatelessWidget {
+class AreaPage extends StatelessWidget {
 
   TextEditingController decimalData = TextEditingController();
   TextEditingController romanData = TextEditingController();
 
   double? selectMesure(value,mesure,type) {
+    var area = Area(removeTrailingZeros: false);
     value = double?.parse(value);
-    var length = Length(removeTrailingZeros: false); //initialize Length object, let's specify that we want to keep the trailing zeros (e.g. 1.00) for stringValue
     late var unit ; //We get all ther others units
     //var unit = length.kilometers; //We get all ther others units
-    //print('name:${unit.name}, value:${unit.value}, stringValue:${unit.stringValue}, symbol:${unit.symbol}');
+    //print('name:${tempo.name}, value:${tempo.value}, stringValue:${tempo.stringValue}, symbol:${tempo.symbol}');
     print('type: ${type}');
 
     switch (mesure) {
-      case "kilomètre":
-        length.convert(LENGTH.kilometers, value); //We give 1 meter as input
+      case "hectares":
+        area.convert(AREA.hectares, value);
         break;
-      case "mètre":
-        length.convert(LENGTH.meters, value); //We give 1 meter as input
+      case "acres":
+        area.convert(AREA.acres, value);
         break;
-      case "decimètre" :
-        length.convert(LENGTH.meters, (value/10)); //We give 1 meter as input
+      case "are" :
+        area.convert(AREA.are, value);
         break;
-      case "centimètre":
-        length.convert(LENGTH.centimeters, value); //We give 1 meter as input
+      case "kilomètre²":
+        area.convert(AREA.square_kilometers, value);
         break;
-      case "milimètre":
-        length.convert(LENGTH.millimeters, value); //We give 1 meter as input
+      case "mètre²":
+        area.convert(AREA.square_meters, value);
         break;
-      case "nanomètre":
-        length.convert(LENGTH.nanometers, value); //We give 1 meter as input
+      case "centimètre²":
+        area.convert(AREA.square_centimeters, value);
         break;
-      case "yard":
-        length.convert(LENGTH.yards, value); //We give 1 meter as input
+      case "milimètre²":
+        area.convert(AREA.square_millimeters, value);
         break;
-      case "pied":
-        length.convert(LENGTH.feet, value); //We give 1 meter as input
+      case "yard²":
+        area.convert(AREA.square_yard, value);
         break;
-      case "pouce":
-        length.convert(LENGTH.inches, value); //We give 1 meter as input
+      case "pied²":
+        area.convert(AREA.square_feet, value);
+        break;
+      case "pouce²":
+        area.convert(AREA.square_inches, value);
         break;
 
-  }
+    }
 
     switch (type) {
-      case "kilomètre":
-        unit =  length.kilometers; //We give 1 meter as input
+      case "hectares":
+        unit = area.hectares;
         break;
-      case "mètre":
-        unit = length.meters;
+      case "acres":
+        unit = area.acres;
         break;
-      case "decimètre" :
-        unit = (length.meters);
-        return (unit.value)*10;
+      case "are" :
+        unit = area.are;
         break;
-      case "centimètre":
-        unit = length.centimeters;
+      case "kilomètre²":
+        unit = area.square_kilometers;
         break;
-      case "milimètre":
-        unit = length.millimeters;
+      case "mètre²":
+        unit = area.square_meters;
         break;
-      case "nanomètre":
-        unit = length.nanometers;
+      case "centimètre²":
+        unit = area.square_centimeters;
         break;
-      case "yard":
-        unit = length.yards;
+      case "milimètre²":
+        unit = area.square_millimeters;
         break;
-      case "pied":
-        unit = length.feet;
+      case "yard²":
+        unit = area.square_yard;
         break;
-      case "pouce":
-        unit = length.inches;
+      case "pied²":
+        unit = area.square_feet;
         break;
-      default :
-        unit = length.meters;
+      case "pouce²":
+        unit = area.square_inches;
+        break;
+
     }
     return unit.value;
 
-}
+  }
 
 
   @override
   Widget build(BuildContext context) {
-    final title = 'Distance métrique';
+    final title = 'Area';
     final ToRoman standardToRoman = ToRoman();
     final FromRoman unicodeFromRoman = FromRoman.unicode();
 
@@ -134,7 +139,7 @@ class DistancePage extends StatelessWidget {
             _setInputField(
               "0",
               romanData,
-              TextInputType.text,
+              TextInputType.text,false
             ),
             ElevatedButton(onPressed: () {
               double? mesure = selectMesure(decimalData.text,dropdownValue,dropdownValueBottom);
@@ -191,10 +196,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue! ;
-         // this.isDropDownTop ? dropdownValue = newValue! : dropdownValueBottom = newValue!;
+          // this.isDropDownTop ? dropdownValue = newValue! : dropdownValueBottom = newValue!;
         });
       },
-      items: <String>['kilomètre', 'mètre','decimètre','centimètre', 'milimètre','nanomètre', 'yard','pied','pouce']
+      items: <String>["hectares", "acres", "are" , "kilomètre²", "mètre²", "centimètre²", "milimètre²", "yard²", "pied²", "pouce²"]
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
@@ -233,7 +238,7 @@ class _MyStatefulWidgetStateDown extends State<MyStatefulWidgetDown> {
           dropdownValueBottom = newValue! ;
         });
       },
-      items: <String>['kilomètre', 'mètre','decimètre','centimètre', 'milimètre','nanomètre', 'yard','pied','pouce']
+      items: <String>["hectares", "acres", "are" , "kilomètre²", "mètre²", "centimètre²", "milimètre²", "yard²", "pied²", "pouce²"]
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
