@@ -249,62 +249,7 @@ class CustomPage {
               return Center(
                 child: TextButton(
                     onPressed: () {
-                      switch (index) {
-                        case 0:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new FileSizePage();
-                          }));
-                          break;
-                        case 1:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new Test();
-                          }));
-                          break;
-                        case 2:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new PromotionPage();
-                          }));
-                          break;
-                        case 3:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new DateDiffPage();
-                          }));
-                          break;
-                        case 4:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new Test();
-                          }));
-                          break;
-                        case 5:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new DistancePage();
-                          }));
-                          break;
-                        case 6:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new TemperatureView();
-                          }));
-                          break;
-                        case 7:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new RomanusPage();
-                          }));
-                          break;
-                        case 8:
-                          Navigator.push(context, new MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return new NumeralConvertPage();
-                          }));
-                          break;
-                      }
+                      _setActionButton(index, context);
                     },
                     child: _setItem(index, context)),
               );
