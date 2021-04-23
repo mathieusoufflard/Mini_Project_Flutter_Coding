@@ -18,25 +18,25 @@ class CustomPage {
         return "Taille de fichiers";
         break;
       case 1:
-        return "2 HONK";
+        return "Temps de vie";
         break;
       case 2:
-        return "Promo";
+        return "Promotion";
         break;
       case 3:
-        return "4 HONK";
+        return "Rencontre entre amis";
         break;
       case 4:
-        return "5 HONK";
+        return "Convertisseur de distances";
         break;
       case 5:
-        return "6 HONK";
+        return "Convertisseur d'unités";
         break;
       case 6:
-        return "7 HONK";
+        return "Convertisseur d'unités métrique";
         break;
       case 7:
-        return "8 HONK";
+        return "Convertisseur de température";
         break;
       case 8:
         return "Convertisseur numérique";
@@ -50,55 +50,55 @@ class CustomPage {
     switch (index) {
       case 0:
         return Icon(
-          Icons.add,
-          color: Colors.green,
+          Icons.file_copy,
+          color: Colors.black,
         );
         break;
       case 1:
         return Icon(
-          Icons.home,
+          Icons.volunteer_activism,
           color: Colors.black,
         );
         break;
       case 2:
         return Icon(
-          Icons.ac_unit,
+          Icons.attach_money,
           color: Colors.black,
         );
         break;
       case 3:
         return Icon(
-          Icons.access_alarm,
+          Icons.wc,
           color: Colors.black,
         );
         break;
       case 4:
         return Icon(
-          Icons.access_time,
+          Icons.agriculture,
           color: Colors.black,
         );
         break;
       case 5:
         return Icon(
-          Icons.accessibility,
+          Icons.calculate,
           color: Colors.black,
         );
         break;
       case 6:
         return Icon(
-          Icons.accessible,
+          Icons.add_road,
           color: Colors.black,
         );
         break;
       case 7:
         return Icon(
-          Icons.account_balance,
+          Icons.ac_unit,
           color: Colors.black,
         );
         break;
       case 8:
         return Icon(
-          Icons.account_balance_wallet,
+          Icons.format_list_numbered,
           color: Colors.black,
         );
         break;
