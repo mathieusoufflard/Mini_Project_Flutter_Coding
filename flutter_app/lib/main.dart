@@ -5,6 +5,7 @@ import 'package:flutter_app/Controllers/DateDiffPage.dart';
 import 'package:flutter_app/numeralConvertPage.dart';
 import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/romanusPage.dart';
+import 'package:flutter_app/AgeCalculator.dart';
 import 'package:flutter_app/testPage.dart';
 import 'package:flutter_app/temperatureView.dart';
 import 'package:flutter_app/distancePage.dart';
