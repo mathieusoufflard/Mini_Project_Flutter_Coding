@@ -91,6 +91,9 @@ class DistancePage extends StatelessWidget {
 
 }
 
+  void changeValue(String val){
+     valueTop = val;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -169,9 +172,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           dropdownValue = newValue! ;
          // this.isDropDownTop ? dropdownValue = newValue! : dropdownValueBottom = newValue!;
         });
-        double? mesure = DistancePage().selectMesure(valueTop,dropdownValue,dropdownValueBottom);
-        DistancePage().romanData.text = mesure!.toStringAsExponential(3);
-        print('la value  ${DistancePage().romanData.text} ');
+        DistancePage distancePage = new DistancePage();
+        final double? mesure;
+        try {
+          String valueInputTop = distancePage.decimalData.text;
+          print("The result is $valueInputTop");
+          mesure = distancePage.selectMesure(valueInputTop,dropdownValue,dropdownValueBottom);
+          DistancePage().romanData.text = mesure!.toStringAsExponential(3);
+
+        } catch (e) {
+          print("The exception thrown is $e");
+          // EditText EtPotential does not contain a valid double
+        }
+
       },
       items: <String>['kilomètre', 'mètre','decimètre','centimètre', 'milimètre','nanomètre', 'yard','pied','pouce']
           .map<DropdownMenuItem<String>>((String value) {
@@ -214,6 +227,7 @@ class _MyStatefulWidgetStateDown extends State<MyStatefulWidgetDown> {
         });
         double? mesure = DistancePage().selectMesure(valueTop,dropdownValue,dropdownValueBottom);
         DistancePage().romanData.text = mesure!.toStringAsExponential(3);
+        print('la value  ${DistancePage().romanData.text} ');
       },
       items: <String>['kilomètre', 'mètre','decimètre','centimètre', 'milimètre','nanomètre', 'yard','pied','pouce']
           .map<DropdownMenuItem<String>>((String value) {
