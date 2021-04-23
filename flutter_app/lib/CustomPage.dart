@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/AgeCalculator.dart';
+import 'package:flutter_app/areaPage.dart';
 import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/romanusPage.dart';
 import 'package:flutter_app/temperatureView.dart';
@@ -31,7 +32,7 @@ class CustomPage {
         return "Convertisseur de distances";
         break;
       case 5:
-        return "Convertisseur d'unités";
+        return "Convertisseur numérique";
         break;
       case 6:
         return "Convertisseur d'unités métrique";
@@ -40,7 +41,7 @@ class CustomPage {
         return "Convertisseur de température";
         break;
       case 8:
-        return "Convertisseur numérique";
+        return "Convertisseur romain";
         break;
       default:
         return "HONK";
@@ -217,7 +218,7 @@ class CustomPage {
       case 6:
         Navigator.push(context,
             new MaterialPageRoute(builder: (BuildContext context) {
-          return new Test();
+          return new AreaPage();
         }));
         break;
       case 7:
