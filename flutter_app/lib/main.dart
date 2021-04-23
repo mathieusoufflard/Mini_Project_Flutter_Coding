@@ -4,6 +4,7 @@ import 'package:flutter_app/Controllers/DateDiffPage.dart';
 import 'package:flutter_app/numeralConvertPage.dart';
 import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/romanusPage.dart';
+import 'package:flutter_app/AgeCalculator.dart';
 import 'package:flutter_app/testPage.dart';
 import 'package:flutter_app/temperatureView.dart';
 import 'package:flutter_app/distancePage.dart';
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return "Taille de fichiers";
         break;
       case 1:
-        return "2 HONK";
+        return "Calculateur d'âge";
         break;
       case 2 :
         return "Promo";
@@ -141,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   case 1:
                     Navigator.push(context,
                         new MaterialPageRoute(builder: (BuildContext context) {
-                      return new Test();
+                      return new AgeCalculator();
                     }));
                     break;
                   case 2:
