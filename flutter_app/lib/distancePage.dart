@@ -1,3 +1,4 @@
+import 'package:flutter_app/Helpers/inputHelper.dart';
 import 'package:units_converter/Length.dart';
 
 
@@ -7,7 +8,7 @@ import 'package:romanice/romanice.dart';
 
 String dropdownValue = 'mètre';
 String dropdownValueBottom = 'mètre';
-
+String valueTop = "";
 
 
 class DistancePage extends StatelessWidget {
@@ -94,30 +95,9 @@ class DistancePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final title = 'Distance';
-    final ToRoman standardToRoman = ToRoman();
-    final FromRoman unicodeFromRoman = FromRoman.unicode();
-
-    _setInputField(String hintText, TextEditingController fieldController,
-        TextInputType inputType,
-        [bool readOnly = false]) {
-      return Container(
-        width: MediaQuery.of(context).size.width / 5,
-        margin: EdgeInsets.all(10),
-        child: TextField(
-          controller: fieldController,
-          keyboardType: inputType,
-          inputFormatters: inputType == TextInputType.number
-              ? <TextInputFormatter>[
-            FilteringTextInputFormatter.allow(RegExp('[0-9.]'))
-          ]
-              : [],
-          decoration: InputDecoration(hintText: hintText),
-          readOnly: readOnly,
-        ),
-      );
-    }
 
 
+    //printData(title);
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -126,16 +106,11 @@ class DistancePage extends StatelessWidget {
         child: Column(
           children: [
             Text("Chiffre decimal :"),
-            _setInputField("0",
-                decimalData, TextInputType.number),
+            InputHelper().setInputField(context, "0", decimalData, TextInputType.number),
             MyStatefulWidget(),
             MyStatefulWidgetDown(),
             Text("Resultat "),
-            _setInputField(
-              "0",
-              romanData,
-              TextInputType.text,
-            ),
+            InputHelper().setInputField(context, "0", romanData, TextInputType.text),
             ElevatedButton(onPressed: () {
               double? mesure = selectMesure(decimalData.text,dropdownValue,dropdownValueBottom);
               romanData.text = mesure!.toStringAsExponential(3);
@@ -189,10 +164,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         color: Colors.deepPurpleAccent,
       ),
       onChanged: (String? newValue) {
+
         setState(() {
           dropdownValue = newValue! ;
          // this.isDropDownTop ? dropdownValue = newValue! : dropdownValueBottom = newValue!;
         });
+        double? mesure = DistancePage().selectMesure(valueTop,dropdownValue,dropdownValueBottom);
+        DistancePage().romanData.text = mesure!.toStringAsExponential(3);
+        print('la value  ${DistancePage().romanData.text} ');
       },
       items: <String>['kilomètre', 'mètre','decimètre','centimètre', 'milimètre','nanomètre', 'yard','pied','pouce']
           .map<DropdownMenuItem<String>>((String value) {
@@ -229,9 +208,12 @@ class _MyStatefulWidgetStateDown extends State<MyStatefulWidgetDown> {
         color: Colors.deepPurpleAccent,
       ),
       onChanged: (String? newValue) {
+
         setState(() {
           dropdownValueBottom = newValue! ;
         });
+        double? mesure = DistancePage().selectMesure(valueTop,dropdownValue,dropdownValueBottom);
+        DistancePage().romanData.text = mesure!.toStringAsExponential(3);
       },
       items: <String>['kilomètre', 'mètre','decimètre','centimètre', 'milimètre','nanomètre', 'yard','pied','pouce']
           .map<DropdownMenuItem<String>>((String value) {
