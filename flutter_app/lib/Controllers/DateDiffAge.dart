@@ -54,7 +54,7 @@ class _DateDiffPageState extends State<DateDiffAge> {
     //nextBdMonth = nextYear.month - firstDate.month;
     //nextBdDay = nextYear.day - firstDate.day;
     
-    return "tu es né il y a  "+ result.toString()+" jours ";
+    return "Tu es né il y a  "+ result.toString()+" jours ";
   }
 
   @override
@@ -82,7 +82,7 @@ class _DateDiffPageState extends State<DateDiffAge> {
                 if  (_firstDate != "")
                 {
                   displayText = "il s'est passée " + _getDateDiff(_firstDate.toString()) + "depuis votre naissance";
-                  displayTextAge = "Ton prochain anniversaire est dans " + _getNextBirthDay(_firstDate.toString()) + " depuis votre naissance";
+                  displayTextAge =  _getNextBirthDay(_firstDate.toString()) ;
                 }
               },
             ),
