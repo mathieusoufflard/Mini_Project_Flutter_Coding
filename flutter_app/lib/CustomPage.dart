@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/AgeCalculator.dart';
 import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/romanusPage.dart';
 import 'package:flutter_app/temperatureView.dart';
@@ -186,7 +187,7 @@ class CustomPage {
       case 1:
         Navigator.push(context,
             new MaterialPageRoute(builder: (BuildContext context) {
-          return new Test();
+          return new AgeCalculator();
         }));
         break;
       case 2:
@@ -204,31 +205,31 @@ class CustomPage {
       case 4:
         Navigator.push(context,
             new MaterialPageRoute(builder: (BuildContext context) {
-          return new Test();
+          return new DistancePage();
         }));
         break;
       case 5:
         Navigator.push(context,
             new MaterialPageRoute(builder: (BuildContext context) {
-          return new DistancePage();
+          return new NumeralConvertPage();
         }));
         break;
       case 6:
         Navigator.push(context,
             new MaterialPageRoute(builder: (BuildContext context) {
-          return new TemperatureView();
+          return new Test();
         }));
         break;
       case 7:
         Navigator.push(context,
             new MaterialPageRoute(builder: (BuildContext context) {
-          return new RomanusPage();
+          return new TemperatureView();
         }));
         break;
       case 8:
         Navigator.push(context,
             new MaterialPageRoute(builder: (BuildContext context) {
-          return new NumeralConvertPage();
+          return new RomanusPage();
         }));
         break;
     }

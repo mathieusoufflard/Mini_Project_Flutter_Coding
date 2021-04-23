@@ -93,7 +93,7 @@ class DistancePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = 'Temperature';
+    final title = 'Distance métrique';
     final ToRoman standardToRoman = ToRoman();
     final FromRoman unicodeFromRoman = FromRoman.unicode();
 
