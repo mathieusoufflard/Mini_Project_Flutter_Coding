@@ -147,6 +147,34 @@ class CustomPage {
     return listItem;
   }
 
+  _setCardListItem(BuildContext context) {
+    //List<Card> cards = [];
+    List<Widget> cards = List.empty(growable: true);
+
+    for (int i = 0; i < 9; i++) {
+      cards.add(Card(
+          child: OutlinedButton(
+              onPressed: () {
+                _setActionButton(i, context);
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width / 2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _iconItem(i),
+                    Text(
+                      _textItem(i),
+                      style: Theme.of(context).textTheme.headline5,
+                    )
+                  ],
+                ),
+              ))));
+    }
+
+    return cards;
+  }
+
   _setActionButton(int index, BuildContext context) {
     switch (index) {
       case 0:
@@ -290,9 +318,15 @@ class CustomPage {
         );
         break;
 
-      /*case disposision.Grid :
+      case disposision.Card:
+        return Container(
+            child: Center(
+          child: Column(
+            children: _setCardListItem(context),
+          ),
+        ));
         break;
-        */
+
       default:
         return Container();
         break;
