@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/AgeCalculator.dart';
+import 'package:flutter_app/Controllers/DateDiffAge.dart';
 import 'package:flutter_app/areaPage.dart';
 import 'package:flutter_app/promotionPage.dart';
 import 'package:flutter_app/romanusPage.dart';
@@ -188,7 +189,7 @@ class CustomPage {
       case 1:
         Navigator.push(context,
             new MaterialPageRoute(builder: (BuildContext context) {
-          return new AgeCalculator();
+          return new DateDiffAge();
         }));
         break;
       case 2:
